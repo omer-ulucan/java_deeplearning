@@ -1,4 +1,4 @@
-package activations;
+package jcuda.activations;
 
 public class ReLU {
     public static double relu(double x) {

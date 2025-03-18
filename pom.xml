@@ -1,48 +1,46 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.example</groupId>
-  <artifactId>java_dl</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>Archetype - java_dl</name>
-  <url>http://maven.apache.org</url>
+    <groupId>jcuda</groupId>
+    <artifactId>java_dl</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-  <dependencies>
-    <!-- JCuda Core -->
-    <dependency>
-      <groupId>org.jcuda</groupId>
-      <artifactId>jcuda</artifactId>
-      <version>12.6.0</version>
-    </dependency>
+    <properties>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-    <!-- JCuda Runtime Library -->
-    <dependency>
-      <groupId>org.jcuda</groupId>
-      <artifactId>jcuda-natives</artifactId>
-      <version>12.6.0</version>
-    </dependency>
+    <dependencies>
+        <!-- JCuda Core -->
+        <dependency>
+            <groupId>org.jcuda</groupId>
+            <artifactId>jcuda</artifactId>
+            <version>12.6.0</version>
+        </dependency>
 
-    <!-- Optional: JCurand (CUDA Random Number Generator) -->
-    <dependency>
-      <groupId>org.jcuda</groupId>
-      <artifactId>jcurand</artifactId>
-      <version>12.6.0</version>
-    </dependency>
+        <!-- JCuda Runtime Library -->
+        <dependency>
+            <groupId>org.jcuda</groupId>
+            <artifactId>jcuda-natives</artifactId>
+            <version>12.6.0</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.jcuda</groupId>
-      <artifactId>jcurand-natives</artifactId>
-      <version>12.6.0</version>
-    </dependency>
+        <!-- Optional: JCurand (CUDA Random Number Generator) -->
+        <dependency>
+            <groupId>org.jcuda</groupId>
+            <artifactId>jcurand</artifactId>
+            <version>12.6.0</version>
+        </dependency>
 
-  </dependencies>
+        <dependency>
+            <groupId>org.jcuda</groupId>
+            <artifactId>jcurand-natives</artifactId>
+            <version>12.6.0</version>
+        </dependency>
 
-  <repositories>
-    <repository>
-      <id>jcuda</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </repository>
-  </repositories>
-
+    </dependencies>
 </project>

@@ -1,4 +1,5 @@
-package math;
+package jcuda.math;
+
 import java.util.concurrent.*;
 
 public class Matrix {
@@ -29,7 +30,7 @@ public class Matrix {
         return columns;
     }
 
-    public double[][] getData(){
+    public double[][] getData() {
         double[][] copy = new double[rows][columns];
         for (int i = 0; i < rows; i++) {
             System.arraycopy(data[i], 0, copy[i], 0, columns);
