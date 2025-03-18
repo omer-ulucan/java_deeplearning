@@ -37,7 +37,7 @@ public class Matrix {
         return copy;
     }
 
-    public Matrix parallelMultiply(Matrix other) {
+    public Matrix multiply(Matrix other) {
         if (this.columns != other.rows) {
             throw new IllegalArgumentException("Matrix cannot multiply: Dimensions mismatch.");
         }
