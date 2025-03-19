@@ -1,4 +1,4 @@
-package jcuda.loss;
+package jcuda.losses;
 
 import jcuda.core.Tensor;
 

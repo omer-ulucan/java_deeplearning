@@ -36,7 +36,6 @@ public class Tensor {
                             "    int i = blockIdx.x * blockDim.x + threadIdx.x; " +
                             "    if (i < N) { C[i] = A[i] * B[i]; } " +
                             "}";
-
             CUmodule module = new CUmodule();
             cuModuleLoadData(module, kernelSource);
 
@@ -205,7 +204,19 @@ public class Tensor {
      * Returns the underlying data array.
      */
     public float[] getData() {
-        return data; // You can also return data.clone() to avoid exposing the internal array.
+        return data;
+    }
+
+    /**
+     * Updates the tensor's data.
+     * The provided data array must have the same length as the current tensor.
+     * @param newData The new data array.
+     */
+    public void setData(float[] newData) {
+        if (newData == null || newData.length != this.size) {
+            throw new IllegalArgumentException("New data must have the same number of elements as the current tensor.");
+        }
+        this.data = newData.clone();
     }
 
     /**
@@ -253,7 +264,6 @@ public class Tensor {
         if (index < 0 || index >= shape[dim]) {
             throw new IllegalArgumentException("Index out of range for the specified dimension.");
         }
-
         // New shape: remove the specified dimension.
         int[] newShape = new int[shape.length - 1];
         for (int i = 0, j = 0; i < shape.length; i++) {
@@ -261,14 +271,11 @@ public class Tensor {
                 newShape[j++] = shape[i];
             }
         }
-
         int newSize = 1;
         for (int d : newShape) {
             newSize *= d;
         }
-
         float[] newData = new float[newSize];
-
         // For each linear index of the new tensor, convert to the original tensor's multi-dimensional index.
         int newRank = newShape.length;
         int[] newStrides = new int[newRank];
@@ -276,7 +283,6 @@ public class Tensor {
         for (int i = newRank - 2; i >= 0; i--) {
             newStrides[i] = newStrides[i + 1] * newShape[i + 1];
         }
-
         // For every linear index:
         for (int lin = 0; lin < newSize; lin++) {
             int rem = lin;
@@ -297,7 +303,6 @@ public class Tensor {
             int flatIndex = getFlatIndex(origIndices);
             newData[lin] = data[flatIndex];
         }
-
         return new Tensor(newData, newShape);
     }
 

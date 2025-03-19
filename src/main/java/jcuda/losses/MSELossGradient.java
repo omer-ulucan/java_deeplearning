@@ -1,26 +1,25 @@
-package jcuda.loss;
+package jcuda.losses;
 
 import jcuda.core.Tensor;
 
-public class MSELoss extends Loss {
+public class MSELossGradient implements LossGradient {
 
     /**
-     * Computes the Mean Squared Error (MSE):
-     * loss = (1/N) * sum((prediction - target)^2)
+     * Computes the gradient for Mean Squared Error (MSE):
+     * dL/dprediction = 2 * (prediction - target) / N
      */
     @Override
-    public float forward(Tensor predictions, Tensor targets) {
+    public Tensor backward(Tensor predictions, Tensor targets) {
         float[] predData = predictions.getData();
         float[] targetData = targets.getData();
         if (predData.length != targetData.length) {
             throw new IllegalArgumentException("Predictions and targets must have the same number of elements.");
         }
-        float sum = 0.0f;
         int n = predData.length;
+        float[] gradData = new float[n];
         for (int i = 0; i < n; i++) {
-            float diff = predData[i] - targetData[i];
-            sum += diff * diff;
+            gradData[i] = 2 * (predData[i] - targetData[i]) / n;
         }
-        return sum / n;
+        return new Tensor(gradData, predictions.getShape());
     }
 }
