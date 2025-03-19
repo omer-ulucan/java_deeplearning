@@ -10,7 +10,7 @@ public abstract class Optimizer {
     }
 
     /**
-     * Update model parameters based on computed gradients.
+     * Updates the model parameters based on computed gradients.
      *
      * @param parameters Array of model parameters.
      * @param gradients Array of gradients corresponding to each parameter.

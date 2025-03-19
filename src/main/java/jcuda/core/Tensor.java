@@ -12,6 +12,15 @@ import static jcuda.driver.JCudaDriver.*;
 
 public class Tensor {
     private float[] data;
+
+    public Pointer getGpuData() {
+        return gpuData;
+    }
+
+    public void setGpuData(Pointer gpuData) {
+        this.gpuData = gpuData;
+    }
+
     private Pointer gpuData;
     private int size;
     private boolean onGPU;
